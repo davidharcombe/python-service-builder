@@ -20,18 +20,24 @@ from typing import Any, Optional
 import dataclasses_json
 import immutabledict
 
-from . import field, lazy_property
+from . import camel_field, lazy_property
 
 
 @dataclasses_json.dataclass_json
 @dataclasses.dataclass
 class ServiceDefinition(object):
-  service_name: Optional[str] = field()
-  version: Optional[str] = field()
-  discovery_service_url: Optional[str] = field()
+  """Defines a Google Service for the builder."""
+  service_name: Optional[str] = camel_field()
+  version: Optional[str] = camel_field()
+  discovery_service_url: Optional[str] = camel_field()
 
 
 class S(enum.Enum):
+  """Defines the generic Enum for any service.
+
+  Raises:
+      ValueError: if no enum is defined.
+  """
   @lazy_property
   def definition(self) -> ServiceDefinition:
     """Fetch the ServiceDefinition.
@@ -52,7 +58,18 @@ class S(enum.Enum):
             f'?version={version}'))
 
   @classmethod
-  def from_value(cls, value) -> S:
+  def from_value(cls, value: str) -> S:
+    """Creates a service enum from the name of the service.
+
+    Args:
+        value (str): the service name
+
+    Raises:
+        ValueError: no service found
+
+    Returns:
+        S: the service definition
+    """
     for k, v in cls.__members__.items():
       if k == value.upper():
         return v

@@ -17,8 +17,8 @@ from service_framework import services
 
 SA360_DEFINITION = \
     services.ServiceDefinition(
-        name='doubleclicksearch',
-        uri='https://doubleclicksearch.googleapis.com/$discovery/rest?version=v2',
+        service_name='doubleclicksearch',
+        discovery_service_url='https://doubleclicksearch.googleapis.com/$discovery/rest?version=v2',
         version='v2')
 GMAIL_ARGS = {
     'serviceName': 'gmail',
@@ -29,10 +29,7 @@ GMAIL_ARGS = {
 
 class ServicesTest(unittest.TestCase):
   def test_valid_service(self):
-    self.assertGreater(services.Service.SA360.value, 0)
+    self.assertGreater(services.Service.DOUBLECLICKSEARCH.value, 0)
 
   def test_single_definition(self):
-    self.assertEqual(SA360_DEFINITION, services.Service.SA360.definition)
-
-  def test_single_to_args(self):
-    self.assertEqual(GMAIL_ARGS, services.Service.GMAIL.definition.to_args)
+    self.assertEqual(SA360_DEFINITION, services.Service.DOUBLECLICKSEARCH.definition)

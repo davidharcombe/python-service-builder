@@ -34,6 +34,14 @@ def lazy_property(f: Callable):
 
 
 def metadata(base: Mapping[str, Any], **custom) -> Mapping[str, Any]:
+  """Merges properties into the metadata and returns the merged result.
+
+  Args:
+      base (Mapping[str, Any]): the existing metadata
+
+  Returns:
+      Mapping[str, Any]: the merged result
+  """
   for key in custom:
     if not custom[key] and key in base:
       del base[key]
@@ -44,16 +52,24 @@ def metadata(base: Mapping[str, Any], **custom) -> Mapping[str, Any]:
   return base
 
 
-def field(default: Any = None, default_factory: Any = None, **kwargs):
+def field(default: Any = None,
+          default_factory: Any = None, **kwargs) -> dataclasses.field:
+  """A generic dataclass field.
+
+  Only one of `default` or `default_factory` should be supplied. If both are
+  given, `default_factory` will take precedence.
+
+  Args:
+      default (Any, optional): the default field value. Defaults to None.
+      default_factory (Any, optional): the default field factory. Defaults to None.
+      **kwargs (Any...): any extra metadata args.
+
+  Returns:
+      dataclasses.field: the field
+  """
   base = {
-      'letter_case': dataclasses_json.LetterCase.CAMEL,
       'exclude': lambda x: not x
   }
-
-  if kwargs:
-    exclude = kwargs.get('exclude', lambda x: not x)
-  else:
-    def exclude(x): return not x
 
   if default_factory:
     f = dataclasses.field(default_factory=default_factory,
@@ -65,3 +81,35 @@ def field(default: Any = None, default_factory: Any = None, **kwargs):
                               **metadata(base=base, **kwargs)))
 
   return f
+
+
+def snake_field(default: Any = None,
+                default_factory: Any = None, **kwargs) -> dataclasses.field:
+  """Defines a generic dataclass field with a `camelCase` rendered name.
+
+  Args:
+      default (Any, optional): the default field value. Defaults to None.
+      default_factory (Any, optional): the default field factory. Defaults to None.
+      **kwargs (Any...): any extra metadata args.
+
+  Returns:
+      dataclasses.field: the field
+  """
+  return field(default=default, default_factory=default_factory,
+               letter_case=dataclasses_json.LetterCase.SNAKE, **kwargs)
+
+
+def camel_field(default: Any = None,
+                default_factory: Any = None, **kwargs) -> dataclasses.field:
+  """Defines a generic dataclass field with a `camelCase` rendered name.
+
+  Args:
+      default (Any, optional): the default field value. Defaults to None.
+      default_factory (Any, optional): the default field factory. Defaults to None.
+      **kwargs (Any...): any extra metadata args.
+
+  Returns:
+      dataclasses.field: the field
+  """
+  return field(default=default, default_factory=default_factory,
+               letter_case=dataclasses_json.LetterCase.CAMEL, **kwargs)

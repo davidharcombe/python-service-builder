@@ -29,21 +29,22 @@ from google.oauth2 import credentials as oauth
 from httplib2 import Http
 from oauth2client import service_account
 
-from .services import Service
-from . import field
+from service_framework.services import Service
+from service_framework import snake_field
 
-@dataclasses_json.dataclass_json(letter_case=dataclasses_json.LetterCase.CAMEL)
+
+@dataclasses_json.dataclass_json
 @dataclasses.dataclass
 class OAuthKey(object):
   """Dataclass from the json key.
 
   NOTE: This is by no means the entire key; just the fields neccessary for OAuth.
   """
-  access_token: Optional[str] = field(field_name='token')
-  refresh_token: Optional[str] = field()
-  token_uri: Optional[str] = field()
-  client_id: Optional[str] = field()
-  client_secret: Optional[str] = field()
+  access_token: Optional[str] = snake_field(field_name='token')
+  refresh_token: Optional[str] = snake_field()
+  token_uri: Optional[str] = snake_field()
+  client_id: Optional[str] = snake_field()
+  client_secret: Optional[str] = snake_field()
 
 
 def build_service(service: Service,
@@ -120,10 +121,10 @@ def build_service(service: Service,
     raise Exception('No valid credentials provided.')
 
   discovery_args = {
-    'http': https,
-    'developerKey': api_key,
-    'cache_discovery': False,
-    **definition.to_dict()
+      'http': https,
+      'developerKey': api_key,
+      'cache_discovery': False,
+      **definition.to_dict()
   }
 
   return discovery.build(**discovery_args)

@@ -13,7 +13,11 @@
 # limitations under the License.
 import unittest
 
-from . import lazy_property
+from service_framework import lazy_property, camel_field
+import dataclasses
+from dataclasses import Field, dataclass
+
+from dataclasses_json import dataclass_json
 
 
 class LazyPropertyTest(unittest.TestCase):
@@ -27,3 +31,86 @@ class LazyPropertyTest(unittest.TestCase):
     self.assertFalse(hasattr(foo, '_lazy_lazy_thing'))
     self.assertEqual('lazy', foo.lazy_thing)
     self.assertTrue(hasattr(foo, '_lazy_lazy_thing'))
+
+
+class CamelFieldTest(unittest.TestCase):
+  def test_base_camel_field(self) -> None:
+    @dataclass_json
+    @dataclass
+    class Base(object):
+      _field: str = camel_field()
+
+    base = Base()
+    base._field = 'foo'
+
+    f: Field = base.__dataclass_fields__.get('_field')
+    self.assertIsNone(f.default)
+    self.assertTrue(isinstance(f.default_factory, dataclasses._MISSING_TYPE))
+    self.assertIsNotNone(f.metadata)
+    self.assertIn('letter_case', f.metadata['dataclasses_json'])
+    self.assertIn('exclude', f.metadata['dataclasses_json'])
+
+  def test_field_with_metadata_removed(self) -> None:
+    @dataclass_json
+    @dataclass
+    class Base(object):
+      _field: str = camel_field(exclude=None)
+
+    base = Base()
+    base._field = 'foo'
+
+    f = base.__dataclass_fields__.get('_field')
+    self.assertIsNone(f.default)
+    self.assertTrue(isinstance(f.default_factory, dataclasses._MISSING_TYPE))
+    self.assertIsNotNone(f.metadata)
+    self.assertIn('letter_case', f.metadata['dataclasses_json'])
+    self.assertNotIn('exclude', f.metadata['dataclasses_json'])
+
+  def test_field_with_metadata_edited(self) -> None:
+    @dataclass_json
+    @dataclass
+    class Base(object):
+      _field: str = camel_field(exclude=True)
+
+    base = Base()
+    base._field = 'foo'
+
+    f = base.__dataclass_fields__.get('_field')
+    self.assertIsNone(f.default)
+    self.assertTrue(isinstance(f.default_factory, dataclasses._MISSING_TYPE))
+    self.assertIsNotNone(f.metadata)
+    self.assertIn('letter_case', f.metadata['dataclasses_json'])
+    self.assertTrue(f.metadata['dataclasses_json']['exclude'])
+
+  def test_field_with_default(self) -> None:
+    @dataclass_json
+    @dataclass
+    class Base(object):
+      _field: str = camel_field(default='Princess Buttercup')
+
+    base = Base()
+
+    f = base.__dataclass_fields__.get('_field')
+    self.assertIsNotNone(f.default)
+    self.assertTrue(isinstance(f.default_factory, dataclasses._MISSING_TYPE))
+    self.assertEquals(base._field, 'Princess Buttercup')
+
+  def test_field_with_no_value_is_excluded(self) -> None:
+    @dataclass_json
+    @dataclass
+    class Base(object):
+      _field: str = camel_field()
+      _other_field: str = camel_field()
+
+    base = Base()
+    base._field = None
+    base._other_field = 'foo'
+
+    print(base.to_json())
+
+    f = base.__dataclass_fields__.get('_field')
+    self.assertIsNone(f.default)
+    self.assertTrue(isinstance(f.default_factory, dataclasses._MISSING_TYPE))
+    self.assertIsNotNone(f.metadata)
+    self.assertIn('letter_case', f.metadata['dataclasses_json'])
+    self.assertTrue(f.metadata['dataclasses_json']['exclude'])
