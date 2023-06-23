@@ -28,12 +28,13 @@ from google.auth import exceptions
 from google.oauth2 import credentials as oauth
 from httplib2 import Http
 from oauth2client import service_account
+from oauth2client import client
 
 from service_framework.services import Service
 from service_framework import snake_field
 
 
-@dataclasses_json.dataclass_json
+@dataclasses_json.dataclass_json(undefined=dataclasses_json.Undefined.EXCLUDE)
 @dataclasses.dataclass
 class OAuthKey(object):
   """Dataclass from the json key.
@@ -75,22 +76,10 @@ def build_service(service: Service,
     if extra_scopes:
       kwargs['scopes'] = extra_scopes
 
-    try:
-      credentials = oauth.Credentials(**kwargs)
-      https = google_auth_httplib2.AuthorizedHttp(credentials)
-
-    except KeyError:
-      logging.exception(
-          'Invalid credentials received: missing a part of the credentials')
-      raise
-
-    except exceptions.RefreshError as error:
-      logging.exception('Invalid credentials received')
-      raise
+    credentials = oauth.Credentials(**kwargs)
 
   elif isinstance(key, oauth.Credentials):
     credentials = key
-    https = google_auth_httplib2.AuthorizedHttp(credentials)
 
   elif isinstance(key, str):
     kwargs = {
@@ -99,27 +88,20 @@ def build_service(service: Service,
     if extra_scopes:
       kwargs['scopes'] = extra_scopes
 
-    credentials = \
-        service_account.ServiceAccountCredentials.from_json_keyfile_name(
-            **kwargs)
-    https = credentials.authorize(Http())
+    credentials = oauth.Credentials.from_authorized_user_file(**kwargs)
 
   elif isinstance(key, Mapping):
-    kwargs = {
-        'keyfile_dict': key,
-    }
+    kwargs = OAuthKey(**key).to_dict()
 
     if extra_scopes:
       kwargs['scopes'] = extra_scopes
 
-    credentials = \
-        service_account.ServiceAccountCredentials.from_json_keyfile_dict(
-            key, scopes=extra_scopes)
-    https = credentials.authorize(Http())
+    credentials = oauth.Credentials(**kwargs)
 
   else:
     raise Exception('No valid credentials provided.')
 
+  https = google_auth_httplib2.AuthorizedHttp(credentials)
   discovery_args = {
       'http': https,
       'developerKey': api_key,
