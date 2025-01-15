@@ -20,39 +20,56 @@ from contextlib import closing, suppress
 from urllib.request import urlopen
 import urllib.parse
 import json
+from typing import Mapping
 
 """ _summary_
 """
-def main(unused):
+
+
+class ServiceLister(object):
+  def find_all(self) -> Mapping[str, str]:
+    return self.find(None)
+
+  def find(self, name: str) -> Mapping[str, str]:
+    Components = namedtuple(
+        typename='Components',
+        field_names=['scheme', 'netloc', 'url', 'path', 'query', 'fragment']
+    )
+
+    apis = {}
+
+    parameters = {'fields': 'items.name,items.version',
+                  'preferred': 'true'}
+    if name:
+      parameters |= {'name': name}
+
+    url = urllib.parse.urlunparse(
+        Components(
+            scheme='https',
+            netloc='www.googleapis.com',
+            query=urllib.parse.urlencode(parameters),
+            path='',
+            url='/discovery/v1/apis',
+            fragment=None
+        )
+    )
+
+    r = urllib.request.Request(url)
+    with closing(urlopen(r)) as _api_list:
+      api_list = json.loads(_api_list.read())
+      if items := api_list.get('items', None):
+        for api in items:
+          apis[api['name'].upper()] = (api['name'], api['version'])
+
+    return apis
+
+
+def main(unused) -> None:
   del unused
 
-  Components = namedtuple(
-      typename='Components',
-      field_names=['scheme', 'netloc', 'url', 'path', 'query', 'fragment']
-  )
-
-  apis = {}
-
-  url = urllib.parse.urlunparse(
-      Components(
-          scheme='https',
-          netloc='www.googleapis.com',
-          query=urllib.parse.urlencode({'fields': 'items.name,items.version',
-                                        'preferred': 'true'}),
-          path='',
-          url='/discovery/v1/apis',
-          fragment=None
-      )
-  )
-
-  r = urllib.request.Request(url)
-  with closing(urlopen(r)) as _api_list:
-    api_list = json.loads(_api_list.read())
-    if items := api_list.get('items', None):
-      for api in items:
-        apis[api['name'].upper()] = (api['name'], api['version'])
-
-  pprint(apis)
+  # apis = ServiceLister().find(name='CHAT'.lower())
+  apis = ServiceLister().find_all()
+  pprint(apis, indent=2)
 
 
 if __name__ == '__main__':

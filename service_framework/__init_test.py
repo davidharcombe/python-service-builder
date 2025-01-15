@@ -93,7 +93,7 @@ class CamelFieldTest(unittest.TestCase):
     f = base.__dataclass_fields__.get('_field')
     self.assertIsNotNone(f.default)
     self.assertTrue(isinstance(f.default_factory, dataclasses._MISSING_TYPE))
-    self.assertEquals(base._field, 'Princess Buttercup')
+    self.assertEqual(base._field, 'Princess Buttercup')
 
   def test_field_with_no_value_is_excluded(self) -> None:
     @dataclass_json
