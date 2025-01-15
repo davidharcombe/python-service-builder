@@ -33,3 +33,4 @@ class ServicesTest(unittest.TestCase):
 
   def test_single_definition(self):
     self.assertEqual(SA360_DEFINITION, services.Service.DOUBLECLICKSEARCH.definition)
+

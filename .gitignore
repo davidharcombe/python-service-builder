@@ -16,5 +16,6 @@
 .editorconfig
 .history/
 .idea/
+.venv/
 .vscode/
 dist/
