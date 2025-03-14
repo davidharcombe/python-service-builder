@@ -11,13 +11,13 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-import unittest
-
-from service_framework import lazy_property, camel_field
 import dataclasses
+import unittest
 from dataclasses import Field, dataclass
 
 from dataclasses_json import dataclass_json
+
+from service_framework import camel_field, lazy_property
 
 
 class LazyPropertyTest(unittest.TestCase):

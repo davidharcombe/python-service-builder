@@ -18,20 +18,15 @@ Authenticate and fetch a discoverable API service.
 from __future__ import annotations
 
 import dataclasses
-import logging
-from typing import Any, List, Mapping, Optional, Union
+from typing import List, Mapping, Optional, Union
 
 import dataclasses_json
 import google_auth_httplib2
 from apiclient import discovery
-from google.auth import exceptions
 from google.oauth2 import credentials as oauth
-from httplib2 import Http
-from oauth2client import service_account
-from oauth2client import client
 
-from service_framework.services import Service
 from service_framework import snake_field
+from service_framework.services import Service
 
 
 @dataclasses_json.dataclass_json(undefined=dataclasses_json.Undefined.EXCLUDE)

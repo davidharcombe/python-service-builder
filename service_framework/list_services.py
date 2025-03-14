@@ -12,18 +12,39 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from collections import namedtuple
-from pprint import pprint
-from absl import app
-import urllib.request
-from contextlib import closing, suppress
-from urllib.request import urlopen
-import urllib.parse
 import json
+import urllib.parse
+import urllib.request
+from collections import namedtuple
+from contextlib import closing, suppress
+from pprint import pprint
 from typing import Mapping
+from urllib.request import urlopen
+
+import aenum as enum
+from absl import app
+
+from service_framework.services import ServiceDefinition
 
 """ _summary_
 """
+
+
+class ServiceFinder(enum.EnumMeta):
+  def __call__(cls, value, *args, **kwargs):
+    api = ServiceLister().find(name=value.lower())
+    if api:
+      (service_name, version) = api[0]
+      definition = ServiceDefinition(
+          service_name=service_name,
+          version=version,
+          discovery_service_url=(
+              f'https://{service_name}.googleapis.com/$discovery/rest'
+              f'?version={version}'))
+      return definition
+
+    else:
+      raise Exception(f'No service found for {value}')
 
 
 class ServiceLister(object):
