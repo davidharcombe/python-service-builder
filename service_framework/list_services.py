@@ -34,13 +34,11 @@ class ServiceFinder(enum.EnumMeta):
   def __call__(cls, value, *args, **kwargs):
     api = ServiceLister().find(name=value.lower())
     if api:
-      (service_name, version) = api[0]
+      (service_name, version, url) = api[0]
       definition = ServiceDefinition(
           service_name=service_name,
           version=version,
-          discovery_service_url=(
-              f'https://{service_name}.googleapis.com/$discovery/rest'
-              f'?version={version}'))
+          discovery_service_url=url)
       return definition
 
     else:
@@ -59,7 +57,7 @@ class ServiceLister(object):
 
     apis = {}
 
-    parameters = {'fields': 'items.name,items.version',
+    parameters = {#'fields': 'items.name,items.version',
                   'preferred': 'true'}
     if name:
       parameters |= {'name': name}
@@ -80,7 +78,7 @@ class ServiceLister(object):
       api_list = json.loads(_api_list.read())
       if items := api_list.get('items', None):
         for api in items:
-          apis[api['name'].upper()] = (api['name'], api['version'])
+          apis[api['name'].upper()] = (api['name'], api['version'], api['discoveryRestUrl'])
 
     return apis
 
