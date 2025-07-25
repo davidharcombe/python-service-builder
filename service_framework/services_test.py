@@ -29,7 +29,7 @@ GMAIL_ARGS = {
 
 class ServicesTest(unittest.TestCase):
   def test_valid_service(self):
-    self.assertGreater(services.Service.DOUBLECLICKSEARCH.value, 0)
+    self.assertNotEqual(services.Service.CHAT.value, None)
 
   def test_single_definition(self):
     self.assertEqual(SA360_DEFINITION, services.Service.DOUBLECLICKSEARCH.definition)

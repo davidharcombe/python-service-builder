@@ -17,11 +17,10 @@ import urllib.parse
 import urllib.request
 from collections import namedtuple
 from contextlib import closing, suppress
-from pprint import pprint
+from datetime import datetime
 from typing import Mapping
 from urllib.request import urlopen
 
-import aenum as enum
 from absl import app
 
 from service_framework.services import ServiceDefinition
@@ -30,11 +29,11 @@ from service_framework.services import ServiceDefinition
 """
 
 
-class ServiceFinder(enum.EnumMeta):
+class ServiceFinder(object):
   def __call__(cls, value, *args, **kwargs):
     api = ServiceLister().find(name=value.lower())
     if api:
-      (service_name, version, url) = api[0]
+      (service_name, version, url) = api[value.upper()]
       definition = ServiceDefinition(
           service_name=service_name,
           version=version,
@@ -42,7 +41,7 @@ class ServiceFinder(enum.EnumMeta):
       return definition
 
     else:
-      raise Exception(f'No service found for {value}')
+      raise Exception(f'No Google service found with the name {value}')
 
 
 class ServiceLister(object):
@@ -57,8 +56,7 @@ class ServiceLister(object):
 
     apis = {}
 
-    parameters = {#'fields': 'items.name,items.version',
-                  'preferred': 'true'}
+    parameters = {'preferred': 'true'}
     if name:
       parameters |= {'name': name}
 
@@ -78,7 +76,8 @@ class ServiceLister(object):
       api_list = json.loads(_api_list.read())
       if items := api_list.get('items', None):
         for api in items:
-          apis[api['name'].upper()] = (api['name'], api['version'], api['discoveryRestUrl'])
+          apis[api['name'].upper()] = (
+              api['name'], api['version'], api['discoveryRestUrl'])
 
     return apis
 
@@ -86,9 +85,22 @@ class ServiceLister(object):
 def main(unused) -> None:
   del unused
 
-  # apis = ServiceLister().find(name='CHAT'.lower())
   apis = ServiceLister().find_all()
-  pprint(apis, indent=2)
+  for k, v in apis.items():
+    print(f'{k} = ServiceDefinition{v}')
+
+  lines = []
+  with open('service_framework/services.py', 'r') as services:
+    while line := services.readline():
+      if 'SERVICE DEFINITIONS:' in line:
+        break
+      else:
+        lines.append(line)
+
+  with open('service_framework/services.py', 'w') as services:
+    lines.append(f'  # SERVICE DEFINITIONS: {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}\n')
+    [lines.append(f'  {k} = ServiceDefinition{v}\n') for k, v in apis.items()]
+    services.writelines(lines)
 
 
 if __name__ == '__main__':

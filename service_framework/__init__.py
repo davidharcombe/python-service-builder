@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 import dataclasses
-from typing import Any, Callable, Mapping
+from typing import Any, Callable, Mapping, Optional
 
 import dataclasses_json
 
@@ -113,3 +113,12 @@ def camel_field(default: Any = None,
   """
   return field(default=default, default_factory=default_factory,
                letter_case=dataclasses_json.LetterCase.CAMEL, **kwargs)
+
+
+@dataclasses_json.dataclass_json
+@dataclasses.dataclass
+class ServiceDefinition(object):
+  """Defines a Google Service for the builder."""
+  service_name: Optional[str] = camel_field()
+  version: Optional[str] = camel_field()
+  discovery_service_url: Optional[str] = camel_field()
