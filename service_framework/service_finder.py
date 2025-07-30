@@ -16,39 +16,46 @@ import json
 import urllib.parse
 import urllib.request
 from collections import namedtuple
-from contextlib import closing, suppress
-from datetime import datetime
+from contextlib import closing
 from typing import Mapping
 from urllib.request import urlopen
 
-from absl import app
-
-from service_framework.services import ServiceDefinition
-
-""" _summary_
-"""
+from service_framework import ServiceDefinition
 
 
 class ServiceFinder(object):
-  def __call__(cls, value, *args, **kwargs):
-    api = ServiceLister().find(name=value.lower())
-    if api:
-      (service_name, version, url) = api[value.upper()]
-      definition = ServiceDefinition(
-          service_name=service_name,
-          version=version,
-          discovery_service_url=url)
-      return definition
+  """ServiceFinder
+  """
+  def __call__(cls, value, *args, **kwargs) -> ServiceDefinition:
+    """What to do when the `ServiceFinder` is invoked
+
+    Usage:
+        ```
+        finder = ServiceFinder()
+        finder('CHAT')
+        ```
+
+    Args:
+        value (str): the name of the service to find
+
+    Raises:
+        Exception: No valid Google service of this name exists
+
+    Returns:
+        ServiceDefinition: the service definition
+    """
+    if api := ServiceFinder.find(name=value.lower()):
+      return api[value.upper()]
 
     else:
-      raise Exception(f'No Google service found with the name {value}')
+      raise Exception(f'No Google service found with the name {value.upper()}')
 
+  @classmethod
+  def find_all(cls) -> Mapping[str, ServiceDefinition]:
+    return cls.find(None)
 
-class ServiceLister(object):
-  def find_all(self) -> Mapping[str, str]:
-    return self.find(None)
-
-  def find(self, name: str) -> Mapping[str, str]:
+  @classmethod
+  def find(cls, name: str) -> Mapping[str, ServiceDefinition]:
     Components = namedtuple(
         typename='Components',
         field_names=['scheme', 'netloc', 'url', 'path', 'query', 'fragment']
@@ -76,33 +83,7 @@ class ServiceLister(object):
       api_list = json.loads(_api_list.read())
       if items := api_list.get('items', None):
         for api in items:
-          apis[api['name'].upper()] = (
+          apis[api['name'].upper()] = ServiceDefinition(
               api['name'], api['version'], api['discoveryRestUrl'])
 
     return apis
-
-
-def main(unused) -> None:
-  del unused
-
-  apis = ServiceLister().find_all()
-  for k, v in apis.items():
-    print(f'{k} = ServiceDefinition{v}')
-
-  lines = []
-  with open('service_framework/services.py', 'r') as services:
-    while line := services.readline():
-      if 'SERVICE DEFINITIONS:' in line:
-        break
-      else:
-        lines.append(line)
-
-  with open('service_framework/services.py', 'w') as services:
-    lines.append(f'  # SERVICE DEFINITIONS: {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}\n')
-    [lines.append(f'  {k} = ServiceDefinition{v}\n') for k, v in apis.items()]
-    services.writelines(lines)
-
-
-if __name__ == '__main__':
-  with suppress(SystemExit):
-    app.run(main)

@@ -18,10 +18,12 @@ ready for use.
 
 `service_builder.build_service()` needs two mandatory pieces of information:
 
-| Parameter | Description |
-| :-: | - |
-| key | The credentials to use to authenticate the user to the service it has to create |
-| service | The Google API endpoint it is trying to connect to. |
+| Parameter | Type | Description |
+| :-: | - | - |
+| key | str | The credentials to use to authenticate the user to the service it has to create. |
+| service | Service | The Google API endpoint it is trying to connect to. |
+| api_key | _See below_ | _Optional_ An API key for those services which require an API key in addition to credentials. |
+| extra_scopes | List[str] | _Optional_ Extra OAuth scopes needed. |
 
 ### `key`
 
@@ -29,7 +31,7 @@ These can be supplied in one of 4 ways.
 
 1. A valid `google.oauth2.Credentials` object, created and passed to the
    service builder.
-1. An `str` which is the name of a local file containing the `json`
+1. A `str` which is the name of a local file containing the `json`
    representation of an OAuth credentials object.
 1. A `Mapping` object which is a `json` keyfile `dict`
 2. An `OAuthKey` object from this package, which is a `dataclass` object
@@ -38,11 +40,36 @@ These can be supplied in one of 4 ways.
 ### `service`
 
 This is an Enum in the `service_framework.service` module, which defines
-the Google service you're planning to connect to. All of these services are
-dynamically built, but their names match the Google-defined name.
+the Google service you're planning to connect to. All the standard Google
+services are included (as of the date listed in the `Services.py` file).
 
-### Example
+If a
+new service has been added but this library has yet to be updated, you can
+request it by using either `Service('<UNLISTED SERVICE>')` or
+`Service.from_value('<UNLISTED SERVICE>')`. This will cause the library to
+attempt to fetch the service's definition from Google and will create an
+entry in the enum for this new service.
 
+### Examples
+
+#### 1. Using `Credentials`
+```
+from service_framework.services import Service
+from service_framework import service_builder
+from google.oauth2 import credentials as oauth
+
+credentials = oauth.Credentials(
+   access_token="<YOUR ACCESS TOKEN>",
+   refresh_token="<YOUR REFRESH TOKEN>",
+   token_uri="https://oauth2.googleapis.com/token",
+   client_id="<YOUR CLIENT ID>",
+   client_secret="<YOUR CLIENT SECRET>"
+)
+
+service = service_builder.build_service(service=Service.CHAT, key=credentials)
+```
+
+#### 2. Using an `OAuthKey`
 ```
 from service_framework.services import Service
 from service_framework import service_builder
@@ -62,12 +89,3 @@ Here, we are creating the key as an `OAuthKey` object as we have clearly got the
 tokens and client_[id|secret] from elsewhere. Creating the service is then as
 simple as invoking the `service_builder.build_service` method which will return
 you a service you can use.
-
-### Other parameters
-
-`service_builder.build_service()` can also take 2 other optional parameters.
-
-| Parameter | Description |
-| :-: | - |
-| api_key | Some APIs require an API key as well as the OAuth credentials |
-| extra_scopes | Any extra OAUth scopes required for the operation |
