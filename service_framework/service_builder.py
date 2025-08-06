@@ -36,7 +36,7 @@ class OAuthKey(object):
 
   NOTE: This is by no means the entire key; just the fields neccessary for OAuth.
   """
-  access_token: Optional[str] = snake_field(field_name='ken')
+  access_token: Optional[str] = snake_field(field_name='token')
   refresh_token: Optional[str] = snake_field()
   token_uri: Optional[str] = snake_field()
   client_id: Optional[str] = snake_field()
