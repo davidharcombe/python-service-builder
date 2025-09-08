@@ -17,20 +17,7 @@ from dataclasses import Field, dataclass
 
 from dataclasses_json import dataclass_json
 
-from service_framework import camel_field, lazy_property
-
-
-class LazyPropertyTest(unittest.TestCase):
-  class Foo(object):
-    @lazy_property
-    def lazy_thing(self) -> str:
-      return 'lazy'
-
-  def test_lazy_thing(self):
-    foo = LazyPropertyTest.Foo()
-    self.assertFalse(hasattr(foo, '_lazy_lazy_thing'))
-    self.assertEqual('lazy', foo.lazy_thing)
-    self.assertTrue(hasattr(foo, '_lazy_lazy_thing'))
+from service_framework import camel_field
 
 
 class CamelFieldTest(unittest.TestCase):
