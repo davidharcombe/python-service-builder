@@ -108,7 +108,7 @@ class Service(enum.Enum):
       return cls.create_service(value)
 
   # DO NOT REMOVE THE LINE BELOW - THIS IS THE MARKER FOR AUTO-FETCH
-  # SERVICE DEFINITIONS: 2026-01-16 21:12:15
+  # SERVICE DEFINITIONS: 2026-01-21 17:57:06
   ABUSIVEEXPERIENCEREPORT = ServiceDefinition(service_name='abusiveexperiencereport', version='v1', discovery_service_url='https://abusiveexperiencereport.googleapis.com/$discovery/rest?version=v1')  # nopep8
   ACCELERATEDMOBILEPAGEURL = ServiceDefinition(service_name='acceleratedmobilepageurl', version='v1', discovery_service_url='https://acceleratedmobilepageurl.googleapis.com/$discovery/rest?version=v1')  # nopep8
   ACCESSAPPROVAL = ServiceDefinition(service_name='accessapproval', version='v1', discovery_service_url='https://accessapproval.googleapis.com/$discovery/rest?version=v1')  # nopep8
@@ -270,6 +270,7 @@ class Service(enum.Enum):
   GROUPSSETTINGS = ServiceDefinition(service_name='groupssettings', version='v1', discovery_service_url='https://groupssettings.googleapis.com/$discovery/rest?version=v1')  # nopep8
   HEALTHCARE = ServiceDefinition(service_name='healthcare', version='v1', discovery_service_url='https://healthcare.googleapis.com/$discovery/rest?version=v1')  # nopep8
   HOMEGRAPH = ServiceDefinition(service_name='homegraph', version='v1', discovery_service_url='https://homegraph.googleapis.com/$discovery/rest?version=v1')  # nopep8
+  HYPERCOMPUTECLUSTER = ServiceDefinition(service_name='hypercomputecluster', version='v1', discovery_service_url='https://hypercomputecluster.googleapis.com/$discovery/rest?version=v1')  # nopep8
   IAM = ServiceDefinition(service_name='iam', version='v2', discovery_service_url='https://iam.googleapis.com/$discovery/rest?version=v2')  # nopep8
   IAMCREDENTIALS = ServiceDefinition(service_name='iamcredentials', version='v1', discovery_service_url='https://iamcredentials.googleapis.com/$discovery/rest?version=v1')  # nopep8
   IAP = ServiceDefinition(service_name='iap', version='v1', discovery_service_url='https://iap.googleapis.com/$discovery/rest?version=v1')  # nopep8
@@ -295,7 +296,7 @@ class Service(enum.Enum):
   MEET = ServiceDefinition(service_name='meet', version='v2', discovery_service_url='https://meet.googleapis.com/$discovery/rest?version=v2')  # nopep8
   MEMCACHE = ServiceDefinition(service_name='memcache', version='v1', discovery_service_url='https://memcache.googleapis.com/$discovery/rest?version=v1')  # nopep8
   MERCHANTAPI = ServiceDefinition(service_name='merchantapi', version='reviews_v1beta', discovery_service_url='https://merchantapi.googleapis.com/$discovery/rest?version=reviews_v1beta')  # nopep8
-  METASTORE = ServiceDefinition(service_name='metastore', version='v2', discovery_service_url='https://metastore.googleapis.com/$discovery/rest?version=v2')  # nopep8
+  METASTORE = ServiceDefinition(service_name='metastore', version='v1', discovery_service_url='https://metastore.googleapis.com/$discovery/rest?version=v1')  # nopep8
   MIGRATIONCENTER = ServiceDefinition(service_name='migrationcenter', version='v1', discovery_service_url='https://migrationcenter.googleapis.com/$discovery/rest?version=v1')  # nopep8
   ML = ServiceDefinition(service_name='ml', version='v1', discovery_service_url='https://ml.googleapis.com/$discovery/rest?version=v1')  # nopep8
   MONITORING = ServiceDefinition(service_name='monitoring', version='v3', discovery_service_url='https://monitoring.googleapis.com/$discovery/rest?version=v3')  # nopep8

@@ -16,6 +16,7 @@ import re
 from contextlib import closing, suppress
 from datetime import datetime
 
+import toml
 from absl import app
 
 from service_framework.service_finder import ServiceFinder
@@ -40,6 +41,20 @@ def main(unused) -> None:
   with closing(open('service_framework/services.py', 'w')) as services:
     services.writelines(lines)
     [services.write(f'  {k} = {v}  # nopep8\n') for k, v in apis.items()]
+
+  lines = ''
+  with open('pyproject.toml', 'r') as pyproject:
+    while line := pyproject.readline():
+      lines += line
+
+  config = toml.loads(lines)
+  version = config['project']['version']
+  parts = version.split('.')
+  parts[-1] = str(int(parts[-1]) + 1)
+  config['project']['version'] = '.'.join(parts)
+
+  with closing(open('pyproject.toml', 'w')) as pyproject:
+    pyproject.writelines(toml.dumps(config))
 
 
 if __name__ == '__main__':
