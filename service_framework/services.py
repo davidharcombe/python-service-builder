@@ -108,7 +108,7 @@ class Service(enum.Enum):
       return cls.create_service(value)
 
   # DO NOT REMOVE THE LINE BELOW - THIS IS THE MARKER FOR AUTO-FETCH
-  # SERVICE DEFINITIONS: 2026-01-21 17:57:06
+  # SERVICE DEFINITIONS: 2026-01-28 20:37:54
   ABUSIVEEXPERIENCEREPORT = ServiceDefinition(service_name='abusiveexperiencereport', version='v1', discovery_service_url='https://abusiveexperiencereport.googleapis.com/$discovery/rest?version=v1')  # nopep8
   ACCELERATEDMOBILEPAGEURL = ServiceDefinition(service_name='acceleratedmobilepageurl', version='v1', discovery_service_url='https://acceleratedmobilepageurl.googleapis.com/$discovery/rest?version=v1')  # nopep8
   ACCESSAPPROVAL = ServiceDefinition(service_name='accessapproval', version='v1', discovery_service_url='https://accessapproval.googleapis.com/$discovery/rest?version=v1')  # nopep8
@@ -384,6 +384,7 @@ class Service(enum.Enum):
   TASKS = ServiceDefinition(service_name='tasks', version='v1', discovery_service_url='https://tasks.googleapis.com/$discovery/rest?version=v1')  # nopep8
   TESTING = ServiceDefinition(service_name='testing', version='v1', discovery_service_url='https://testing.googleapis.com/$discovery/rest?version=v1')  # nopep8
   TEXTTOSPEECH = ServiceDefinition(service_name='texttospeech', version='v1', discovery_service_url='https://texttospeech.googleapis.com/$discovery/rest?version=v1')  # nopep8
+  THREATINTELLIGENCE = ServiceDefinition(service_name='threatintelligence', version='v1beta', discovery_service_url='https://threatintelligence.googleapis.com/$discovery/rest?version=v1beta')  # nopep8
   TOOLRESULTS = ServiceDefinition(service_name='toolresults', version='v1beta3', discovery_service_url='https://toolresults.googleapis.com/$discovery/rest?version=v1beta3')  # nopep8
   TPU = ServiceDefinition(service_name='tpu', version='v2', discovery_service_url='https://tpu.googleapis.com/$discovery/rest?version=v2')  # nopep8
   TRAFFICDIRECTOR = ServiceDefinition(service_name='trafficdirector', version='v3', discovery_service_url='https://trafficdirector.googleapis.com/$discovery/rest?version=v3')  # nopep8
