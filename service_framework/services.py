@@ -108,7 +108,7 @@ class Service(enum.Enum):
       return cls.create_service(value)
 
   # DO NOT REMOVE THE LINE BELOW - THIS IS THE MARKER FOR AUTO-FETCH
-  # SERVICE DEFINITIONS: 2026-01-28 20:37:54
+  # SERVICE DEFINITIONS: 2026-09-09 16:29:01
   ABUSIVEEXPERIENCEREPORT = ServiceDefinition(service_name='abusiveexperiencereport', version='v1', discovery_service_url='https://abusiveexperiencereport.googleapis.com/$discovery/rest?version=v1')  # nopep8
   ACCELERATEDMOBILEPAGEURL = ServiceDefinition(service_name='acceleratedmobilepageurl', version='v1', discovery_service_url='https://acceleratedmobilepageurl.googleapis.com/$discovery/rest?version=v1')  # nopep8
   ACCESSAPPROVAL = ServiceDefinition(service_name='accessapproval', version='v1', discovery_service_url='https://accessapproval.googleapis.com/$discovery/rest?version=v1')  # nopep8
@@ -121,21 +121,24 @@ class Service(enum.Enum):
   ADSENSE = ServiceDefinition(service_name='adsense', version='v2', discovery_service_url='https://adsense.googleapis.com/$discovery/rest?version=v2')  # nopep8
   ADSENSEPLATFORM = ServiceDefinition(service_name='adsenseplatform', version='v1', discovery_service_url='https://adsenseplatform.googleapis.com/$discovery/rest?version=v1')  # nopep8
   ADVISORYNOTIFICATIONS = ServiceDefinition(service_name='advisorynotifications', version='v1', discovery_service_url='https://advisorynotifications.googleapis.com/$discovery/rest?version=v1')  # nopep8
+  AGENCIESANDBRANDS = ServiceDefinition(service_name='agenciesandbrands', version='v1', discovery_service_url='https://agenciesandbrands.googleapis.com/$discovery/rest?version=v1')  # nopep8
+  AGENTIDENTITY = ServiceDefinition(service_name='agentidentity', version='v1', discovery_service_url='https://agentidentity.googleapis.com/$discovery/rest?version=v1')  # nopep8
+  AGENTIDENTITYCREDENTIALS = ServiceDefinition(service_name='agentidentitycredentials', version='v1', discovery_service_url='https://agentidentitycredentials.googleapis.com/$discovery/rest?version=v1')  # nopep8
+  AGENTREGISTRY = ServiceDefinition(service_name='agentregistry', version='v1', discovery_service_url='https://agentregistry.googleapis.com/$discovery/rest?version=v1')  # nopep8
   AIPLATFORM = ServiceDefinition(service_name='aiplatform', version='v1', discovery_service_url='https://aiplatform.googleapis.com/$discovery/rest?version=v1')  # nopep8
   AIRQUALITY = ServiceDefinition(service_name='airquality', version='v1', discovery_service_url='https://airquality.googleapis.com/$discovery/rest?version=v1')  # nopep8
   ALERTCENTER = ServiceDefinition(service_name='alertcenter', version='v1beta1', discovery_service_url='https://alertcenter.googleapis.com/$discovery/rest?version=v1beta1')  # nopep8
   ALLOYDB = ServiceDefinition(service_name='alloydb', version='v1', discovery_service_url='https://alloydb.googleapis.com/$discovery/rest?version=v1')  # nopep8
-  ANALYTICS = ServiceDefinition(service_name='analytics', version='v3', discovery_service_url='https://analytics.googleapis.com/$discovery/rest?version=v3')  # nopep8
   ANALYTICSADMIN = ServiceDefinition(service_name='analyticsadmin', version='v1beta', discovery_service_url='https://analyticsadmin.googleapis.com/$discovery/rest?version=v1beta')  # nopep8
   ANALYTICSDATA = ServiceDefinition(service_name='analyticsdata', version='v1beta', discovery_service_url='https://analyticsdata.googleapis.com/$discovery/rest?version=v1beta')  # nopep8
   ANALYTICSHUB = ServiceDefinition(service_name='analyticshub', version='v1', discovery_service_url='https://analyticshub.googleapis.com/$discovery/rest?version=v1')  # nopep8
+  ANDROIDDEVELOPERIDSTATUS = ServiceDefinition(service_name='androiddeveloperidstatus', version='v1', discovery_service_url='https://androiddeveloperidstatus.googleapis.com/$discovery/rest?version=v1')  # nopep8
   ANDROIDDEVICEPROVISIONING = ServiceDefinition(service_name='androiddeviceprovisioning', version='v1', discovery_service_url='https://androiddeviceprovisioning.googleapis.com/$discovery/rest?version=v1')  # nopep8
   ANDROIDENTERPRISE = ServiceDefinition(service_name='androidenterprise', version='v1', discovery_service_url='https://androidenterprise.googleapis.com/$discovery/rest?version=v1')  # nopep8
   ANDROIDMANAGEMENT = ServiceDefinition(service_name='androidmanagement', version='v1', discovery_service_url='https://androidmanagement.googleapis.com/$discovery/rest?version=v1')  # nopep8
   ANDROIDPUBLISHER = ServiceDefinition(service_name='androidpublisher', version='v3', discovery_service_url='https://androidpublisher.googleapis.com/$discovery/rest?version=v3')  # nopep8
   APIGATEWAY = ServiceDefinition(service_name='apigateway', version='v1', discovery_service_url='https://apigateway.googleapis.com/$discovery/rest?version=v1')  # nopep8
   APIGEE = ServiceDefinition(service_name='apigee', version='v1', discovery_service_url='https://apigee.googleapis.com/$discovery/rest?version=v1')  # nopep8
-  APIGEEREGISTRY = ServiceDefinition(service_name='apigeeregistry', version='v1', discovery_service_url='https://apigeeregistry.googleapis.com/$discovery/rest?version=v1')  # nopep8
   APIHUB = ServiceDefinition(service_name='apihub', version='v1', discovery_service_url='https://apihub.googleapis.com/$discovery/rest?version=v1')  # nopep8
   APIKEYS = ServiceDefinition(service_name='apikeys', version='v2', discovery_service_url='https://apikeys.googleapis.com/$discovery/rest?version=v2')  # nopep8
   APIM = ServiceDefinition(service_name='apim', version='v1alpha', discovery_service_url='https://apim.googleapis.com/$discovery/rest?version=v1alpha')  # nopep8
@@ -146,6 +149,7 @@ class Service(enum.Enum):
   AREAINSIGHTS = ServiceDefinition(service_name='areainsights', version='v1', discovery_service_url='https://areainsights.googleapis.com/$discovery/rest?version=v1')  # nopep8
   ARTIFACTREGISTRY = ServiceDefinition(service_name='artifactregistry', version='v1', discovery_service_url='https://artifactregistry.googleapis.com/$discovery/rest?version=v1')  # nopep8
   ASSUREDWORKLOADS = ServiceDefinition(service_name='assuredworkloads', version='v1', discovery_service_url='https://assuredworkloads.googleapis.com/$discovery/rest?version=v1')  # nopep8
+  AUDITMANAGER = ServiceDefinition(service_name='auditmanager', version='v1', discovery_service_url='https://auditmanager.googleapis.com/$discovery/rest?version=v1')  # nopep8
   AUTHORIZEDBUYERSMARKETPLACE = ServiceDefinition(service_name='authorizedbuyersmarketplace', version='v1', discovery_service_url='https://authorizedbuyersmarketplace.googleapis.com/$discovery/rest?version=v1')  # nopep8
   BACKUPDR = ServiceDefinition(service_name='backupdr', version='v1', discovery_service_url='https://backupdr.googleapis.com/$discovery/rest?version=v1')  # nopep8
   BAREMETALSOLUTION = ServiceDefinition(service_name='baremetalsolution', version='v2', discovery_service_url='https://baremetalsolution.googleapis.com/$discovery/rest?version=v2')  # nopep8
@@ -166,6 +170,7 @@ class Service(enum.Enum):
   BUSINESSPROFILEPERFORMANCE = ServiceDefinition(service_name='businessprofileperformance', version='v1', discovery_service_url='https://businessprofileperformance.googleapis.com/$discovery/rest?version=v1')  # nopep8
   CALENDAR = ServiceDefinition(service_name='calendar', version='v3', discovery_service_url='https://calendar-json.googleapis.com/$discovery/rest?version=v3')  # nopep8
   CERTIFICATEMANAGER = ServiceDefinition(service_name='certificatemanager', version='v1', discovery_service_url='https://certificatemanager.googleapis.com/$discovery/rest?version=v1')  # nopep8
+  CES = ServiceDefinition(service_name='ces', version='v1', discovery_service_url='https://ces.googleapis.com/$discovery/rest?version=v1')  # nopep8
   CHAT = ServiceDefinition(service_name='chat', version='v1', discovery_service_url='https://chat.googleapis.com/$discovery/rest?version=v1')  # nopep8
   CHECKS = ServiceDefinition(service_name='checks', version='v1alpha', discovery_service_url='https://checks.googleapis.com/$discovery/rest?version=v1alpha')  # nopep8
   CHROMEMANAGEMENT = ServiceDefinition(service_name='chromemanagement', version='v1', discovery_service_url='https://chromemanagement.googleapis.com/$discovery/rest?version=v1')  # nopep8
@@ -186,6 +191,8 @@ class Service(enum.Enum):
   CLOUDIDENTITY = ServiceDefinition(service_name='cloudidentity', version='v1', discovery_service_url='https://cloudidentity.googleapis.com/$discovery/rest?version=v1')  # nopep8
   CLOUDKMS = ServiceDefinition(service_name='cloudkms', version='v1', discovery_service_url='https://cloudkms.googleapis.com/$discovery/rest?version=v1')  # nopep8
   CLOUDLOCATIONFINDER = ServiceDefinition(service_name='cloudlocationfinder', version='v1', discovery_service_url='https://cloudlocationfinder.googleapis.com/$discovery/rest?version=v1')  # nopep8
+  CLOUDNUMBERREGISTRY = ServiceDefinition(service_name='cloudnumberregistry', version='v1alpha', discovery_service_url='https://cloudnumberregistry.googleapis.com/$discovery/rest?version=v1alpha')  # nopep8
+  CLOUDPRODUCTREGISTRY = ServiceDefinition(service_name='cloudproductregistry', version='v1', discovery_service_url='https://cloudproductregistry.googleapis.com/$discovery/rest?version=v1')  # nopep8
   CLOUDPROFILER = ServiceDefinition(service_name='cloudprofiler', version='v2', discovery_service_url='https://cloudprofiler.googleapis.com/$discovery/rest?version=v2')  # nopep8
   CLOUDRESOURCEMANAGER = ServiceDefinition(service_name='cloudresourcemanager', version='v3', discovery_service_url='https://cloudresourcemanager.googleapis.com/$discovery/rest?version=v3')  # nopep8
   CLOUDSCHEDULER = ServiceDefinition(service_name='cloudscheduler', version='v1', discovery_service_url='https://cloudscheduler.googleapis.com/$discovery/rest?version=v1')  # nopep8
@@ -202,10 +209,11 @@ class Service(enum.Enum):
   CONTACTCENTERINSIGHTS = ServiceDefinition(service_name='contactcenterinsights', version='v1', discovery_service_url='https://contactcenterinsights.googleapis.com/$discovery/rest?version=v1')  # nopep8
   CONTAINER = ServiceDefinition(service_name='container', version='v1', discovery_service_url='https://container.googleapis.com/$discovery/rest?version=v1')  # nopep8
   CONTAINERANALYSIS = ServiceDefinition(service_name='containeranalysis', version='v1', discovery_service_url='https://containeranalysis.googleapis.com/$discovery/rest?version=v1')  # nopep8
-  CONTENT = ServiceDefinition(service_name='content', version='v2.1', discovery_service_url='https://shoppingcontent.googleapis.com/$discovery/rest?version=v2.1')  # nopep8
   CONTENTWAREHOUSE = ServiceDefinition(service_name='contentwarehouse', version='v1', discovery_service_url='https://contentwarehouse.googleapis.com/$discovery/rest?version=v1')  # nopep8
   CSS = ServiceDefinition(service_name='css', version='v1', discovery_service_url='https://css.googleapis.com/$discovery/rest?version=v1')  # nopep8
+  CURATIONPARTNERS = ServiceDefinition(service_name='curationpartners', version='v1', discovery_service_url='https://curationpartners.googleapis.com/$discovery/rest?version=v1')  # nopep8
   CUSTOMSEARCH = ServiceDefinition(service_name='customsearch', version='v1', discovery_service_url='https://customsearch.googleapis.com/$discovery/rest?version=v1')  # nopep8
+  DATABASECENTER = ServiceDefinition(service_name='databasecenter', version='v1beta', discovery_service_url='https://databasecenter.googleapis.com/$discovery/rest?version=v1beta')  # nopep8
   DATACATALOG = ServiceDefinition(service_name='datacatalog', version='v1', discovery_service_url='https://datacatalog.googleapis.com/$discovery/rest?version=v1')  # nopep8
   DATAFLOW = ServiceDefinition(service_name='dataflow', version='v1b3', discovery_service_url='https://dataflow.googleapis.com/$discovery/rest?version=v1b3')  # nopep8
   DATAFORM = ServiceDefinition(service_name='dataform', version='v1', discovery_service_url='https://dataform.googleapis.com/$discovery/rest?version=v1')  # nopep8
@@ -217,11 +225,12 @@ class Service(enum.Enum):
   DATAPIPELINES = ServiceDefinition(service_name='datapipelines', version='v1', discovery_service_url='https://datapipelines.googleapis.com/$discovery/rest?version=v1')  # nopep8
   DATAPLEX = ServiceDefinition(service_name='dataplex', version='v1', discovery_service_url='https://dataplex.googleapis.com/$discovery/rest?version=v1')  # nopep8
   DATAPORTABILITY = ServiceDefinition(service_name='dataportability', version='v1', discovery_service_url='https://dataportability.googleapis.com/$discovery/rest?version=v1')  # nopep8
-  DATAPROC = ServiceDefinition(service_name='dataproc', version='v1', discovery_service_url='https://dataproc.googleapis.com/$discovery/rest?version=v1')  # nopep8
+  DATAPROC = ServiceDefinition(service_name='dataproc', version='v2', discovery_service_url='https://dataproc.googleapis.com/$discovery/rest?version=v2')  # nopep8
   DATASTORE = ServiceDefinition(service_name='datastore', version='v1', discovery_service_url='https://datastore.googleapis.com/$discovery/rest?version=v1')  # nopep8
   DATASTREAM = ServiceDefinition(service_name='datastream', version='v1', discovery_service_url='https://datastream.googleapis.com/$discovery/rest?version=v1')  # nopep8
   DEPLOYMENTMANAGER = ServiceDefinition(service_name='deploymentmanager', version='v2', discovery_service_url='https://deploymentmanager.googleapis.com/$discovery/rest?version=v2')  # nopep8
   DEVELOPERCONNECT = ServiceDefinition(service_name='developerconnect', version='v1', discovery_service_url='https://developerconnect.googleapis.com/$discovery/rest?version=v1')  # nopep8
+  DEVELOPERKNOWLEDGE = ServiceDefinition(service_name='developerknowledge', version='v1', discovery_service_url='https://developerknowledge.googleapis.com/$discovery/rest?version=v1')  # nopep8
   DFAREPORTING = ServiceDefinition(service_name='dfareporting', version='v5', discovery_service_url='https://dfareporting.googleapis.com/$discovery/rest?version=v5')  # nopep8
   DIALOGFLOW = ServiceDefinition(service_name='dialogflow', version='v3', discovery_service_url='https://dialogflow.googleapis.com/$discovery/rest?version=v3')  # nopep8
   DIGITALASSETLINKS = ServiceDefinition(service_name='digitalassetlinks', version='v1', discovery_service_url='https://digitalassetlinks.googleapis.com/$discovery/rest?version=v1')  # nopep8
@@ -248,6 +257,7 @@ class Service(enum.Enum):
   FIREBASEAPPCHECK = ServiceDefinition(service_name='firebaseappcheck', version='v1', discovery_service_url='https://firebaseappcheck.googleapis.com/$discovery/rest?version=v1')  # nopep8
   FIREBASEAPPDISTRIBUTION = ServiceDefinition(service_name='firebaseappdistribution', version='v1', discovery_service_url='https://firebaseappdistribution.googleapis.com/$discovery/rest?version=v1')  # nopep8
   FIREBASEAPPHOSTING = ServiceDefinition(service_name='firebaseapphosting', version='v1', discovery_service_url='https://firebaseapphosting.googleapis.com/$discovery/rest?version=v1')  # nopep8
+  FIREBASECRASHLYTICS = ServiceDefinition(service_name='firebasecrashlytics', version='v1alpha', discovery_service_url='https://firebasecrashlytics.googleapis.com/$discovery/rest?version=v1alpha')  # nopep8
   FIREBASEDATABASE = ServiceDefinition(service_name='firebasedatabase', version='v1beta', discovery_service_url='https://firebasedatabase.googleapis.com/$discovery/rest?version=v1beta')  # nopep8
   FIREBASEDATACONNECT = ServiceDefinition(service_name='firebasedataconnect', version='v1', discovery_service_url='https://firebasedataconnect.googleapis.com/$discovery/rest?version=v1')  # nopep8
   FIREBASEDYNAMICLINKS = ServiceDefinition(service_name='firebasedynamiclinks', version='v1', discovery_service_url='https://firebasedynamiclinks.googleapis.com/$discovery/rest?version=v1')  # nopep8
@@ -258,6 +268,7 @@ class Service(enum.Enum):
   FIRESTORE = ServiceDefinition(service_name='firestore', version='v1', discovery_service_url='https://firestore.googleapis.com/$discovery/rest?version=v1')  # nopep8
   FITNESS = ServiceDefinition(service_name='fitness', version='v1', discovery_service_url='https://fitness.googleapis.com/$discovery/rest?version=v1')  # nopep8
   FORMS = ServiceDefinition(service_name='forms', version='v1', discovery_service_url='https://forms.googleapis.com/$discovery/rest?version=v1')  # nopep8
+  FTP = ServiceDefinition(service_name='ftp', version='v1', discovery_service_url='https://ftp.googleapis.com/$discovery/rest?version=v1')  # nopep8
   GAMES = ServiceDefinition(service_name='games', version='v1', discovery_service_url='https://games.googleapis.com/$discovery/rest?version=v1')  # nopep8
   GAMESCONFIGURATION = ServiceDefinition(service_name='gamesConfiguration', version='v1configuration', discovery_service_url='https://gamesconfiguration.googleapis.com/$discovery/rest?version=v1configuration')  # nopep8
   GAMESMANAGEMENT = ServiceDefinition(service_name='gamesManagement', version='v1management', discovery_service_url='https://gamesmanagement.googleapis.com/$discovery/rest?version=v1management')  # nopep8
@@ -265,9 +276,10 @@ class Service(enum.Enum):
   GKEHUB = ServiceDefinition(service_name='gkehub', version='v2', discovery_service_url='https://gkehub.googleapis.com/$discovery/rest?version=v2')  # nopep8
   GKEONPREM = ServiceDefinition(service_name='gkeonprem', version='v1', discovery_service_url='https://gkeonprem.googleapis.com/$discovery/rest?version=v1')  # nopep8
   GMAIL = ServiceDefinition(service_name='gmail', version='v1', discovery_service_url='https://gmail.googleapis.com/$discovery/rest?version=v1')  # nopep8
-  GMAILPOSTMASTERTOOLS = ServiceDefinition(service_name='gmailpostmastertools', version='v1', discovery_service_url='https://gmailpostmastertools.googleapis.com/$discovery/rest?version=v1')  # nopep8
+  GMAILPOSTMASTERTOOLS = ServiceDefinition(service_name='gmailpostmastertools', version='v2', discovery_service_url='https://gmailpostmastertools.googleapis.com/$discovery/rest?version=v2')  # nopep8
   GROUPSMIGRATION = ServiceDefinition(service_name='groupsmigration', version='v1', discovery_service_url='https://groupsmigration.googleapis.com/$discovery/rest?version=v1')  # nopep8
   GROUPSSETTINGS = ServiceDefinition(service_name='groupssettings', version='v1', discovery_service_url='https://groupssettings.googleapis.com/$discovery/rest?version=v1')  # nopep8
+  HEALTH = ServiceDefinition(service_name='health', version='v4', discovery_service_url='https://health.googleapis.com/$discovery/rest?version=v4')  # nopep8
   HEALTHCARE = ServiceDefinition(service_name='healthcare', version='v1', discovery_service_url='https://healthcare.googleapis.com/$discovery/rest?version=v1')  # nopep8
   HOMEGRAPH = ServiceDefinition(service_name='homegraph', version='v1', discovery_service_url='https://homegraph.googleapis.com/$discovery/rest?version=v1')  # nopep8
   HYPERCOMPUTECLUSTER = ServiceDefinition(service_name='hypercomputecluster', version='v1', discovery_service_url='https://hypercomputecluster.googleapis.com/$discovery/rest?version=v1')  # nopep8
@@ -285,7 +297,6 @@ class Service(enum.Enum):
   LANGUAGE = ServiceDefinition(service_name='language', version='v2', discovery_service_url='https://language.googleapis.com/$discovery/rest?version=v2')  # nopep8
   LIBRARYAGENT = ServiceDefinition(service_name='libraryagent', version='v1', discovery_service_url='https://libraryagent.googleapis.com/$discovery/rest?version=v1')  # nopep8
   LICENSING = ServiceDefinition(service_name='licensing', version='v1', discovery_service_url='https://licensing.googleapis.com/$discovery/rest?version=v1')  # nopep8
-  LIFESCIENCES = ServiceDefinition(service_name='lifesciences', version='v2beta', discovery_service_url='https://lifesciences.googleapis.com/$discovery/rest?version=v2beta')  # nopep8
   LOCALSERVICES = ServiceDefinition(service_name='localservices', version='v1', discovery_service_url='https://localservices.googleapis.com/$discovery/rest?version=v1')  # nopep8
   LOGGING = ServiceDefinition(service_name='logging', version='v2', discovery_service_url='https://logging.googleapis.com/$discovery/rest?version=v2')  # nopep8
   LOOKER = ServiceDefinition(service_name='looker', version='v1', discovery_service_url='https://looker.googleapis.com/$discovery/rest?version=v1')  # nopep8
@@ -351,11 +362,11 @@ class Service(enum.Enum):
   RETAIL = ServiceDefinition(service_name='retail', version='v2', discovery_service_url='https://retail.googleapis.com/$discovery/rest?version=v2')  # nopep8
   RUN = ServiceDefinition(service_name='run', version='v2', discovery_service_url='https://run.googleapis.com/$discovery/rest?version=v2')  # nopep8
   RUNTIMECONFIG = ServiceDefinition(service_name='runtimeconfig', version='v1', discovery_service_url='https://runtimeconfig.googleapis.com/$discovery/rest?version=v1')  # nopep8
-  SAASSERVICEMGMT = ServiceDefinition(service_name='saasservicemgmt', version='v1beta1', discovery_service_url='https://saasservicemgmt.googleapis.com/$discovery/rest?version=v1beta1')  # nopep8
+  SAASSERVICEMGMT = ServiceDefinition(service_name='saasservicemgmt', version='v1', discovery_service_url='https://saasservicemgmt.googleapis.com/$discovery/rest?version=v1')  # nopep8
   SAFEBROWSING = ServiceDefinition(service_name='safebrowsing', version='v5', discovery_service_url='https://safebrowsing.googleapis.com/$discovery/rest?version=v5')  # nopep8
   SASPORTAL = ServiceDefinition(service_name='sasportal', version='v1alpha1', discovery_service_url='https://sasportal.googleapis.com/$discovery/rest?version=v1alpha1')  # nopep8
   SCRIPT = ServiceDefinition(service_name='script', version='v1', discovery_service_url='https://script.googleapis.com/$discovery/rest?version=v1')  # nopep8
-  SEARCHADS360 = ServiceDefinition(service_name='searchads360', version='v0', discovery_service_url='https://searchads360.googleapis.com/$discovery/rest?version=v0')  # nopep8
+  SEARCHADS360 = ServiceDefinition(service_name='searchads360', version='v23', discovery_service_url='https://searchads360.googleapis.com/$discovery/rest?version=v23')  # nopep8
   SEARCHCONSOLE = ServiceDefinition(service_name='searchconsole', version='v1', discovery_service_url='https://searchconsole.googleapis.com/$discovery/rest?version=v1')  # nopep8
   SECRETMANAGER = ServiceDefinition(service_name='secretmanager', version='v1', discovery_service_url='https://secretmanager.googleapis.com/$discovery/rest?version=v1')  # nopep8
   SECURESOURCEMANAGER = ServiceDefinition(service_name='securesourcemanager', version='v1', discovery_service_url='https://securesourcemanager.googleapis.com/$discovery/rest?version=v1')  # nopep8
@@ -400,6 +411,7 @@ class Service(enum.Enum):
   VMWAREENGINE = ServiceDefinition(service_name='vmwareengine', version='v1', discovery_service_url='https://vmwareengine.googleapis.com/$discovery/rest?version=v1')  # nopep8
   VPCACCESS = ServiceDefinition(service_name='vpcaccess', version='v1', discovery_service_url='https://vpcaccess.googleapis.com/$discovery/rest?version=v1')  # nopep8
   WALLETOBJECTS = ServiceDefinition(service_name='walletobjects', version='v1', discovery_service_url='https://walletobjects.googleapis.com/$discovery/rest?version=v1')  # nopep8
+  WEBCONTENTPUBLISHER = ServiceDefinition(service_name='webcontentpublisher', version='v1', discovery_service_url='https://webcontentpublisher.googleapis.com/$discovery/rest?version=v1')  # nopep8
   WEBFONTS = ServiceDefinition(service_name='webfonts', version='v1', discovery_service_url='https://webfonts.googleapis.com/$discovery/rest?version=v1')  # nopep8
   WEBRISK = ServiceDefinition(service_name='webrisk', version='v1', discovery_service_url='https://webrisk.googleapis.com/$discovery/rest?version=v1')  # nopep8
   WEBSECURITYSCANNER = ServiceDefinition(service_name='websecurityscanner', version='v1', discovery_service_url='https://websecurityscanner.googleapis.com/$discovery/rest?version=v1')  # nopep8
